@@ -1,0 +1,21 @@
+# ===== 编译产物 =====
+*.o
+*.out
+*.exe
+a.out
+build/
+bin/
+
+# ===== 编辑器 / 系统 =====
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# ===== 日志 / 缓存 =====
+*.log
+.cache/
+
+# ===== 环境变量 / 密钥 =====
+.env
+!.env.example
