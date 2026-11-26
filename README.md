@@ -22,11 +22,33 @@ learn-template/
 ├── notes/           # 笔记，按语言分目录
 │   └── c/           #   C 知识点笔记
 ├── log/             # 学习记录（按日期，见 log/YYYY-MM-DD.md）
+├── scripts/         # 一键构建/运行脚本（无需 make 也能跑）
+│   └── run_examples.sh
+├── Makefile         # make test 统一入口（自动遍历并运行所有示例）
 ├── resources.md     # 书单 / 教程 / 文档链接
 ├── .gitignore
 ├── LICENSE
 └── README.md
 ```
+
+## 🏃 一键编译并运行所有代码
+
+每写好一个 `.c`，都能一键编译运行，省去手敲 `gcc`：
+
+```bash
+# 方式一：用 make（已装 make 时）
+make test            # 编译并运行 code/ 下所有 C 示例，任一失败则报错退出
+make build           # 仅编译，产物在 build/
+make clean           # 删除 build/
+
+# 方式二：用脚本（无需 make，Windows 用 Git Bash / WSL）
+bash scripts/run_examples.sh
+bash scripts/run_examples.sh --only basics/hello   # 只跑某个示例
+```
+
+- 编译器默认 `gcc`，可用环境变量覆盖：`CC=clang make test`。
+- 示例产物输出到 `build/`（已在 `.gitignore` 忽略，不会污染仓库）。
+- **扩展其他语言**：在 `Makefile` 里参照 `C_SRCS`/`C_BINS` 加一组 `<lang>_SRCS`/`<lang>_BINS` 即可；脚本目前聚焦于 C，可作为模板改写。
 
 ## 🔁 每次学习，照这个流程加东西
 
